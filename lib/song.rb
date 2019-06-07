@@ -35,11 +35,23 @@ class Song
   end
 
   def self.artists
-    @@artists.uniq!
+    @@artists.uniq
   end
 
   def self.genres
-    @@genres.uniq!
+    @@genres.uniq
+  end
+
+  def self.genre_count
+    counts = Hash.new(0)
+    @@genres.each { |genre| counts[genre] += 1 }
+    return counts
+  end
+
+  def self.artist_count
+    counts = Hash.new(0)
+    @@artists.each { |artist| counts[artist] += 1 }
+    return counts
   end
 end
 
@@ -53,3 +65,7 @@ p hit_me.genre
 
 p Song.artists
 p Song.genres
+
+p Song.genre_count
+
+p Song.artist_count
